@@ -1,11 +1,22 @@
 const chalk = require("chalk");
+const inclusiveLanguage = require("./inclusive-language");
 
 module.exports = {
   initArguments: {},
-  configFunction: function(eleventyConfig, options = {
-    words: "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy",
-    templateFormats: ["md"]
-  }) {
+  configFunction: function(eleventyConfig, options = {}) {
+
+    // TODO move this into default argument when 0.5.5 or newer is released
+    /* {
+      words: "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy",
+      templateFormats: ["md"]
+    } */
+    if(!options.words) {
+      options.words = "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy";
+    }
+    if(!options.templateFormats) {
+      options.templateFormats = ["md"];
+    }
+
     eleventyConfig.addLinter("inclusive-language", function(content, inputPath, outputPath) {
       let words;
       if(Array.isArray(options.words)) {
@@ -31,17 +42,7 @@ module.exports = {
         return;
       }
 
-      let found = [];
-      for( let word of words) {
-        word = word.trim();
-        let regexp = new RegExp("\\b(" + word + ")\\b", "gi");
-        if(!!content.match(regexp)) {
-          let split = content.split(regexp);
-          for(let j = 0, k = split.length; j + 1 < k; j+=2) {
-            found.push( split[j].substr(-30) + chalk.underline(split[j+1]) + split[j+2].substr(0, 30));
-          }
-        }
-      }
+      let found = inclusiveLanguage(content, words);
 
       if(found.length) {
         console.warn(chalk.yellow(`Inclusive Language Linter (${inputPath}):`));
