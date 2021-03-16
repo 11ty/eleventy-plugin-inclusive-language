@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const inclusiveLanguage = require("./inclusive-language");
+const fg = require('fast-glob')
 
 module.exports = {
   initArguments: {},
@@ -17,7 +18,12 @@ module.exports = {
       options.templateFormats = ["md"];
     }
 
+    if(!options.exclude) {
+      options.exclude = []
+    }
+
     eleventyConfig.addLinter("inclusive-language", function(content, inputPath, outputPath) {
+      const excludes = fg.sync(options.exclude, {dot: true})
       let words;
       if(Array.isArray(options.words)) {
         words = options.words;
@@ -31,7 +37,16 @@ module.exports = {
         throw new Error("Invalid type for options.templateFormats (needs array) in eleventy-plugin-inclusive-language");
       }
 
+      if(!Array.isArray(options.exclude)) {
+        throw new Error("Invalid type for options.exclude (needs array) in eleventy-plugin-inclusive-language");
+      }
+
       let checkThisFile = false;
+      
+      if(excludes.includes(inputPath)) {
+        return;
+      } 
+      
       for( let format of options.templateFormats ) {
         if( inputPath.endsWith("." + format) ) {
           checkThisFile = true;

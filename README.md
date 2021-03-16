@@ -37,7 +37,13 @@ module.exports = function(eleventyConfig) {
 
     // accepts an array or a comma-delimited string
     words:
-      "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy"
+      "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy",
+
+    // accepts an array of file or folder paths to match
+    exclude: [
+      'posts/blog-post.md',
+      'posts/**/a-year-in-review.md'
+    ]
   });
 };
 
