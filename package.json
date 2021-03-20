@@ -1,7 +1,10 @@
 {
   "name": "@11ty/eleventy-plugin-inclusive-language",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "An Eleventy linter plugin to check for inclusive language in markdown files.",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": ".eleventy.js",
   "scripts": {
     "test": "npx ava"
@@ -9,6 +12,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/11ty/eleventy-plugin-inclusive-language.git"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/11ty"
   },
   "keywords": [
     "eleventy",
@@ -23,12 +30,14 @@
   "bugs": {
     "url": "https://github.com/11ty/eleventy-plugin-inclusive-language/issues"
   },
-  "homepage": "https://github.com/11ty/eleventy-plugin-inclusive-language#readme",
+  "homepage": "https://www.11ty.dev/docs/plugins/inclusive-language/",
+  "peerDependencies": {
+    "@11ty/eleventy": ">=0.6.0"
+  },
   "devDependencies": {
-    "ava": "^0.25.0"
+    "ava": "^3.15.0"
   },
   "dependencies": {
-    "@11ty/eleventy": "^0.5.4",
-    "chalk": "^2.4.1"
+    "chalk": "^4.1.0"
   }
 }

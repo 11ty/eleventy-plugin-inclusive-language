@@ -1,5 +1,5 @@
-import test from "ava";
-import inclusiveLanguage from "../inclusive-language";
+const test = require("ava");
+const inclusiveLanguage = require("../inclusive-language");
 
 test("Results not found", t => {
 	t.is(inclusiveLanguage("", []).length, 0);
