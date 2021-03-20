@@ -36,8 +36,7 @@ module.exports = function(eleventyConfig) {
     templateFormats: ["md"], // default, add more file extensions here
 
     // accepts an array or a comma-delimited string
-    words:
-      "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy"
+    words: "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy"
   });
 };
 
