@@ -14,4 +14,4 @@ module.exports = function(content, words) {
   }
 
   return found;
-}
+};

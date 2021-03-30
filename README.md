@@ -9,12 +9,12 @@ An [Eleventy](https://github.com/11ty/eleventy) linter plugin to check for inclu
 Available on [npm](https://www.npmjs.com/package/@11ty/eleventy-plugin-inclusive-language).
 
 ```
-npm install @11ty/eleventy-plugin-inclusive-language --save
+npm install @11ty/eleventy-plugin-inclusive-language --save-dev
 ```
 
 Open up your Eleventy config file (probably `.eleventy.js`) and use `addPlugin`:
 
-```
+```js
 const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 
 module.exports = function(eleventyConfig) {
