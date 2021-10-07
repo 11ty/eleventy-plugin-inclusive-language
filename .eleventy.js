@@ -1,9 +1,15 @@
+const pkg = require("./package.json");
 const chalk = require("chalk");
 const inclusiveLanguage = require("./inclusive-language");
 
 module.exports = {
   initArguments: {},
   configFunction: function(eleventyConfig, options = {}) {
+    try {
+      eleventyConfig.versionCheck(pkg["11ty"].compatibility);
+    } catch(e) {
+      console.log( `WARN: Eleventy Plugin (${pkg.name}) Compatibility: ${e.message}` );
+    }
 
     // TODO move this into default argument when 0.5.5 or newer is released
     /* {
