@@ -1,6 +1,6 @@
 {
   "name": "@11ty/eleventy-plugin-inclusive-language",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An Eleventy linter plugin to check for inclusive language in markdown files.",
   "publishConfig": {
     "access": "public"
