@@ -36,7 +36,14 @@ module.exports = function(eleventyConfig) {
     templateFormats: ["md"], // default, add more file extensions here
 
     // accepts an array or a comma-delimited string
-    words: "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy"
+    words:
+      "simply,obviously,basically,of course,clearly,just,everyone knows,however,easy",
+
+    // accepts an array of file or folder paths to match
+    exclude: [
+      'posts/blog-post.md',
+      'posts/**/a-year-in-review.md'
+    ]
   });
 };
 
